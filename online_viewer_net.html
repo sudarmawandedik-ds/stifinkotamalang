@@ -1,3 +1,611 @@
-<!-- Your existing content here -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temukan Mesin Kecerdasan Anak | Tes STIFIn</title>
+    <meta name="description" content="Konsultasi Tes Sidik Jari STIFIn untuk mengetahui cara belajar, kepribadian, dan potensi terbaik anak SD-SMA.">
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary: #2D3748; /* Dark Slate for Trust */
+            --accent: #3182CE; /* Professional Blue */
+            /* --- MAXIMUM CONTRAST BUTTON COLORS --- */
+            --cta-color: #003366;       /* Background: Very Deep Navy (High Contrast) */
+            --cta-hover: #002244;       /* Background: Pitch Blackish Navy (Hover) */
+            /* --------------------------------------- */
+            --bg-white: #FFFFFF;
+            --bg-soft: #F7FAFC;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --border-radius: 12px;
+            --container-width: 600px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-soft);
+            font-size: 16px;
+            padding-bottom: 80px; /* Space for floating button */
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            background-color: var(--bg-white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        section {
+            padding: 30px 20px; /* Optimized padding for mobile */
+        }
+
+        /* Background Alternatives */
+        .bg-white { background-color: var(--bg-white); }
+        .bg-soft { background-color: var(--bg-soft); }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            line-height: 1.3;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        h1 { font-size: 1.6rem; }
+        h2 { font-size: 1.4rem; }
+        h3 { font-size: 1.2rem; }
+        p { margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem; }
+
+        .text-center { text-align: center; }
+        .highlight { color: var(--accent); font-weight: bold; }
+
+        /* --- COMPONENTS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px; /* Slightly larger padding */
+            background-color: var(--cta-color); 
+            color: #FFFFFF !important; /* Force White Text */
+            text-decoration: none;
+            font-weight: 800; /* Extra Bold for max contrast */
+            font-size: 1rem;
+            text-transform: uppercase; /* Helps legibility */
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(0, 51, 102, 0.4); /* Dark shadow */
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover { 
+            background-color: var(--cta-hover); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(0, 51, 102, 0.6);
+        }
+        
+        .btn svg { 
+            margin-right: 10px; 
+            width: 24px; 
+            height: 24px; 
+            fill: white; 
+        }
+
+        .card {
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 16px;
+            border: 1px solid #EDF2F7;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            text-align: left;
+        }
+
+        .hidden-cta {
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 8px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- PREMIUM PRICE BOX STYLES --- */
+        .premium-price-box {
+            background: #FFFFFF;
+            border: 2px solid #D69E2E;
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 24px 0;
+            text-align: center; /* Headings centered */
+            overflow: hidden;
+        }
+
+        .premium-price-box::before {
+            content: "BEST VALUE";
+            position: absolute;
+            top: 20px;
+            right: -35px; 
+            background: #D69E2E;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .price-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 40px; /* Pushed down to avoid ribbon overlap */
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-container {
+            margin: 16px 0;
+            border-bottom: 1px solid #EDF2F7;
+            padding-bottom: 20px;
+        }
+
+        .price-normal {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .price-promo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #003366; /* Matching Button Color */
+            line-height: 1;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .price-unit {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        .price-save {
+            display: inline-block;
+            background-color: #FED7D7;
+            color: #C53030;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 8px;
+        }
+
+        /* --- STRICT LEFT ALIGNMENT FOR LISTS (MOBILE OPTIMIZATION) --- */
+        ul, .deliverables-list {
+            text-align: left !important; 
+            margin: 20px 0 !important;   /* Vertical margin, horizontal 0 to prevent auto-center */
+            padding: 0 !important;        /* Remove browser default padding */
+            width: 100%;                  /* Occupy full width of parent */
+            list-style: none;             /* Remove default bullets */
+            display: block;
+        }
+
+        li {
+            text-align: left !important;
+            margin-bottom: 12px;
+            padding-left: 28px; /* Space for custom checkmark */
+            font-size: 0.9rem;
+            color: var(--text-main);
+            position: relative;
+            line-height: 1.5;
+            width: 100%;
+            display: block;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--cta-color); /* Matches the new button color */
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .deliverables-list strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .guarantee-badge {
+            background-color: #F0FFF4;
+            border: 1px solid #9AE6B4;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.8rem;
+            color: #22543D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* --- PROMOTER PROFILE --- */
+        .promoter-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #FFF;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #E2E8F0;
+        }
+        
+        .promoter-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 3px solid var(--accent);
+        }
+
+        /* --- FAQ SECTION STYLES --- */
+        .faq-item {
+            background-color: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: background 0.2s;
+        }
+
+        .faq-label:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 15px;
+            background: #F7FAFC;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-top: 0px solid transparent;
+        }
+
+        .faq-input {
+            display: none;
+        }
+
+        /* Logic Accordion */
+        .faq-input:checked ~ .faq-answer {
+            max-height: 300px; /* Limit height expansion */
+            padding: 15px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-input:checked ~ .faq-label .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* --- FLOATING BUTTON (REDESIGNED) --- */
+        .float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #003366; /* Same Deep Navy */
+            color: #FFFFFF !important; /* Force White */
+            padding: 12px 24px;
+            border-radius: 30px; /* Rounded Pill */
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.6); /* Strong shadow */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 800; /* Extra Bold */
+            font-size: 0.95rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border: 1px solid #FFFFFF; /* White border for extra contrast against dark backgrounds */
+        }
+
+        .float-btn:hover {
+            transform: translateY(-2px);
+            background-color: #002244;
+        }
+
+        /* --- IMAGES & BADGES --- */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ECC94B;
+            color: #744210;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #E2E8F0;
+            padding: 30px 20px 80px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid #CBD5E0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header class="bg-white">
+        <img src="https://cuandigital.id/wp-content/uploads/2026/01/Foto-anak-yang-terlihat-bosanstres-belajar-didampingi-orang-tua-yang-bingung-ekspresi-frustrasi.webp" alt="Foto anak yang terlihat bosan">
+        <div style="padding: 24px 20px; text-align: center;">
+            <span class="badge">Info Orang Tua Cerdas</span>
+            <h1 class="text-center">Jangan Paksakan Anak Belajar dengan Cara Orang Lain</h1>
+            <p class="text-center">Ternyata, setiap anak memiliki "Mesin Kecerdasan" yang unik. Cara menghidupkan mesinnya pun berbeda. Apakah Anda sudah menggunakan kunci yang tepat?</p>
+        </div>
+    </header>
+
+    <section class="bg-soft">
+        <h2 class="text-center">Bukan Anaknya yang "Bodoh", Tapi Metodenya yang Kurang Pas</h2>
+        <p>Pernah merasa frustasi melihat anak sudah belajar berjam-jam tapi nilainya stagnan? Atau anak seolah "malas" padahal potensinya luar biasa?</p>
+        <p>Sebagai orang tua, kita sering terjebak mengukur kecerdasan anak dengan standar yang sama. Padahal, secara biologis, cara kerja otak mereka berbeda.</p>
+        <p class="highlight text-center">Bayangkan jika Anda mencoba mengendarai mobil dengan buku panduan pesawat terbang. Pasti tidak akan berjalan lancar, bukan?</p>
+        <div class="card">
+            <h3 class="text-center">Kenyataan Ilmiah yang Perlu Anda Tahu:</h3>
+            <p>Sidik jari terbentuk bersamaan dengan perkembangan saraf otak saat usia kehamilan 13-24 minggu. Artinya, pola sidik jari kita adalah cetak biru (blueprint) bagaimana otak kita bekerja.</p>
+        </div>
+    </section>
+
+    <div style="padding: 0 20px 20px 20px;" class="bg-white">
+        <div class="card" style="background-color: #FFF5F5; border: 1px dashed #FC8181;">
+            <h3 class="text-center" style="color: #C53030; margin-bottom: 12px;">⚠️ Cek: Apakah Anak Anda Menunjukkan Tanda Ini?</h3>
+            <p class="text-center" style="margin-bottom: 12px;">Jika 1 dari 3 poin ini terjadi, berarti Anda <strong>belum</strong> mengoptimalkan mesin otaknya:</p>
+            <ul>
+                <li>😴 Mengantuk atau bosan saat belajar dengan metode tulis/baca biasa?</li>
+                <li>🔇 Sepertinya "mendengar" tapi sering lupa instruksi?</li>
+                <li>🤸‍♂️ Sering tidak bisa diam (dibilang hiperaktif), padahal cuma berpikir sambil bergerak?</li>
+            </ul>
+            <p class="text-center" style="font-weight: bold; margin-top: 12px; color: #C53030;">Temukan kenapa ini terjadi di hasil Tes STIFIn.</p>
+        </div>
+    </div>
+
+    <section class="bg-soft">
+        <h2 class="text-center">Perkenalkan: <span class="highlight">Tes STIFIn</span></h2>
+        
+        <div style="background-color: #E6FFFA; padding: 16px; border-left: 4px solid #38B2AC; border-radius: 8px; margin-bottom: 24px;">
+            <p style="margin:0; color: #234E52;">
+                <strong>💡 Tahukah Anda?</strong> <br>
+                Jawaban kenapa anak sulit fokus atau "kurang pinter" bukan ada di buku pelajarannya, melainkan <span style="text-decoration: underline;">tercetak di ujung jarinya</span>. Tes STIFIn akan membuka jawabannya.
+            </p>
+        </div>
+
+        <p>Tes biometrik sederhana (memindai 10 sidik jari) untuk memetakan potensi diri anak secara akurat. Ini bukan sekadar tes kepribadian biasa, ini adalah "Manual Panduan" untuk memaksimalkan potensi anak.</p>
+        
+        <p style="font-weight: bold; color: var(--primary);">Dengan Tes STIFIn, Anda akan mengetahui:</p>
+        <ul>
+            <li><strong>Mesin Kecerdasan Utama:</strong> Apakah anak tipe Sensing, Feeling, Thinking, atau lainnya?</li>
+            <li><strong>Cara Belajar Paling Ampuh:</strong> Metode belajar yang membuatnya cepat paham dan tidak mudah lupa.</li>
+            <li><strong>Gaya Komunikasi Efektif:</strong> Bagaimana cara berbicara agar anak mau mendengar nasihat Anda.</li>
+            <li><strong>Lingkungan Ideal:</strong> Kondisi belajar apa yang membuatnya merasa nyaman dan fokus.</li>
+            <li><strong>Potensi Karir & Bakat:</strong> Arah minat yang sesuai dengan kecerdasan alaminya.</li>
+        </ul>
+
+        <img src="https://cuandigital.id/wp-content/uploads/2026/01/promotor-memberikan-penjelasan.webp" alt="promotor memberikan penjelasan" style="margin-top: 20px;">
+        <p class="text-center" style="font-size: 0.9rem; margin-top: 10px;"><em>Hasil tes berupa penjelasan mendalam + konsultasi 1 on 1.</em></p>
+    </section>
+
+    <section class="bg-white">
+        <h2 class="text-center">Siapa yang Mengetes Anak Anda?</h2>
+        <p class="text-center">Hasil tes tidak akan berguna tanpa interpretasi yang tepat. Analisis dibantu langsung oleh ahlinya:</p>
+        
+        <div class="promoter-card">
+            <img src="https://cuandigital.id/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-04-at-20.06.10.jpeg" alt="Efi Hidayatiningsih">
+            <h3 style="margin-bottom: 5px;">Efi Hidayatiningsih</h3>
+            <p style="font-size: 0.9rem; color: var(--accent); font-weight: bold; margin-bottom: 12px;">Trainer BNSP dan Certified Promotor STIFIn</p>
+            
+            <p style="font-weight:600; margin-bottom:12px;">Credentials:</p>
+            <ul class="deliverables-list">
+                <li><strong>Certified STIFIn ABK</strong></li>
+                <li><strong>Certified STIFIn Parenting</strong></li>
+                <li><strong>Certified STIFIn Tahfidz</strong></li>
+                <li><strong>Certified STIFIn Couple</strong></li>
+                <li><strong>Certified STIFIn Human Resources</strong></li>
+                <li><strong>Certified STIFIn Finance</strong></li>
+                <li><strong>Certified STIFIn Learning</strong></li>
+                <li><strong>Certified STIFIn Magnet Rejeki</strong></li>
+                <li><strong>Certified Mentoring Powerful Qur'an-PPA Institute</strong></li>
+            </ul>
+            <p style="font-size: 0.95rem;">Berpengalaman membedah kecerdasan lebih dari 500+ anak & remaja. Membantu orang tua menghadapi fase rebelling dan kesulitan belajar dengan pendekatan yang ilmiah.</p>
+        </div>
+    </section>
+
+    <section class="bg-soft">
+        <h2 class="text-center">Mengapa Tes Ini Dapat Dipercaya?</h2>
+        <p class="text-center">Tes ini menggunakan teknologi biometrik yang mengidentifikasi sidik jari untuk membaca bagian otak yang paling aktif (dominan).</p>
+        
+        <div style="display: grid; gap: 16px;">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2rem;">🔬</div>
+                <h3>Terukur & Ilmiah</h3>
+                <p>Berdasarkan riset genetika dan neurosains mengenai korelasi sidik jari dan otak.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2rem;">⏳</div>
+                <h3>Sekali Tes, Seumur Hidup</h3>
+                <p>Kecerdasan mesin otak tidak berubah. Hasil tes ini valid untuk jangka panjang.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white">
+        <div style="display: flex; align-items: center; background: #FED7D7; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #FC8181;">
+            <div style="font-size: 1.4rem; margin-right: 12px;">🔥</div>
+            <div>
+                <strong style="color: #C53030; display: block; font-size: 0.85rem;">Kuota Konsultasi Minggu Ini Terbatas!</strong>
+                <span style="font-size: 0.8rem; color: #9B2C2C;">Hanya melayani 5 orang lagi karena Konsultasi 1 on 1.</span>
+            </div>
+        </div>
+
+        <div class="premium-price-box">
+            <h3 class="price-title">Paket Spesial Orang Tua Cerdas</h3>
+            
+            <div class="price-container">
+                <span class="price-normal">Normal Rp 750.000</span>
+                <br>
+                <span class="price-promo">Rp 650.000</span>
+                <span class="price-unit">/ orang</span>
+                <br>
+                <span class="price-save">Hemat Rp 100.000</span>
+            </div>
+
+            <p style="font-weight:600; margin-bottom:12px;">Apa yang Anda dapatkan:</p>
+            <ul class="deliverables-list">
+                <li><strong>E-sertifikat + Sertifikat fisik</strong></li>
+                <li><strong>Sesi Penjelasan +  Konsultasi 1 on 1</strong> (1-2 Jam)</li>
+                <li><strong>Strategi Belajar</strong> yang disesuaikan Mesin Kecerdasan Anak</li>
+                <li><strong>Tips Parenting</strong> untuk komunikasi efektif</li>
+                <li>👨‍👩‍👧‍♦️ <strong>Spesial:</strong> Diskon tambahan Rp 50.000 untuk tes anak ke-2!</li>
+            </ul>
+
+            <div class="guarantee-badge">
+                🛡️ <strong>Garansi Kepuasan:</strong> Jika Anda tidak puas dengan penjelasan, kami berikan sesi tanya jawab lanjutan tanpa biaya tambahan.
+            </div>
+        </div>
+
+        <h2 class="text-center">Bantu Anak Anda Temukan Versi Terbaik Dirinya</h2>
+        <p class="text-center">Dapatkan laporan lengkap & sesi konsultasi privat.</p>
+        
+        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20promo%20Tes%20STIFIn%20Rp%20650rb" class="btn">
+            KLIK UNTUK KONSULTASI💬
+        </a>
+
+        <div class="hidden-cta">
+            *Konsultasi awal gratis untuk menjawab pertanyaan Anda.
+        </div>
+    </section>
+
+    <section class="bg-soft">
+        <h2 class="text-center">Sering Ditanyakan</h2>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq1" class="faq-input">
+            <label for="faq1" class="faq-label">
+                Apakah tes ini sakit/diambil darah?
+                <span class="faq-icon">+</span>
+            </label>
+            <div class="faq-answer">
+                <p>Tidak sama sekali. Tes ini hanya memindai (scan) 10 ujung jari menggunakan alat scanner khusus. Sangat aman, tanpa jarum suntik, dan nyaman untuk anak mulai usia 3 tahun ke atas.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq2" class="faq-input">
+            <label for="faq2" class="faq-label">
+                Berapa lama proses tesnya?
+                <span class="faq-icon">+</span>
+            </label>
+            <div class="faq-answer">
+                <p>Pengambilan data sidik jari sangat singkat, hanya 5-10 menit. Hasil tes akan keluar tidak lama kemudian, lalu dilanjutkan dengan sesi penjelasan (konsultasi privat) sekitar 30-60 menit.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq3" class="faq-input">
+            <label for="faq3" class="faq-label">
+                Apakah hasilnya bisa berubah saat dewasa?
+                <span class="faq-icon">+</span>
+            </label>
+            <div class="faq-answer">
+                <p>Tidak. Pola sidik jari bersifat permanen dan tidak berubah seumur hidup. Karena itu, tes STIFIn cukup dilakukan satu kali saja seumur hidup (One time test for a lifetime). Hemat biaya dan waktu!</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <input type="checkbox" id="faq4" class="faq-input">
+            <label for="faq4" class="faq-label">
+                Bisakah tes dilakukan secara online?
+                <span class="faq-icon">+</span>
+            </label>
+            <div class="faq-answer">
+                <p>Untuk pengambilan data sidik jari wajib bertemu langsung (offline) karena menggunakan alat scanner khusus. Namun, untuk sesi penjelasan hasil (konsultasi) bisa dilakukan secara online via Zoom atau WhatsApp call.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Licensed Promotor STIFIn Terpercaya.</p>
+        <p style="font-size: 0.75rem; margin-top: 10px;">Disclaimer: Hasil tes dirancang untuk memberikan panduan pengembangan diri dan parenting.</p>
+    </footer>
+
+</div>
+
+<a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20tanya%20Tes%20STIFIn" class="float-btn">
+    Chat Cepat💬
+</a>
+
 <script src="script.js"></script>
+
 </body>
+</html>
